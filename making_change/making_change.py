@@ -3,9 +3,16 @@
 import sys
 
 def making_change(amount, denominations):
-  # Your code here
+  ways = [0] * (amount + 1)
 
-  pass
+  ways[0] = 1
+
+  for i in range(len(denominations)):
+    for j in range(len(ways)):
+      if(denominations[i] <= j):
+        ways[j] += ways[(j-denominations[i])]
+
+    return ways[amount]
 
 
 if __name__ == "__main__":
